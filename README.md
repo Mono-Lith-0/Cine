@@ -1,1 +1,1 @@
-# Cine
+# GitCine
