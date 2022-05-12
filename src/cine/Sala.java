@@ -7,9 +7,9 @@ package cine;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Clase utilizada para gestionar una sala de cine
@@ -124,5 +124,55 @@ public class Sala {
             writer.write(displayButaca());
         }
         System.out.println(nombre + " ha sido guardado correctamente.");
+    }
+    
+    /**
+     * Busca todas las butacas consecutivas disponible para un grupo de
+     * personas que vienen juntas
+     * @param personas número de personas que se sentarán de forma contigua 
+     * @return Map de las butacas disponibles donde su fila es la clave
+     */
+    public Map checkButaca(int personas) {
+        /*
+        encontradas: Map de butacas disponibles
+        fila: fila de la representación de la sala
+        columna: columna de la representación de la sala
+        contador: contador utilizado para contar las butacas libres contiguas
+        */
+        Map<Integer, ArrayList<Integer>> encontradas = new HashMap();
+        int fila = 0;
+        int columna;
+        int contador;
+        
+        for (boolean[] butacas : this.butaca) {
+            columna = 0;
+            contador = 0;
+            // para cada fila se comprueba si cumple el requisito de butacas
+            while (columna < butacas.length && contador < personas) {
+                if (butacas[columna]) {
+                    contador++;
+                    // si el Map no contiene la fila esta es generada
+                    if (!encontradas.containsKey(fila)) {
+                        encontradas.put(fila, new ArrayList<>());
+                        encontradas.get(fila).add(columna);
+                    } else {
+                        encontradas.get(fila).add(columna);
+                    }
+                // si la sucesión de butacas se rompe se elimina el Map de la fila
+                } else {
+                    contador = 0;
+                    encontradas.remove(fila);
+                }
+                columna++;
+            }
+            // limpia la clave fila si no hay suficientes butacas
+            if (contador < personas) {
+                encontradas.remove(fila);
+            }
+            
+            fila ++;
+        }
+        
+        return encontradas;
     }
 }
