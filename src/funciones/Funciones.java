@@ -8,7 +8,7 @@ import cine.Sala;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.util.ArrayList;
+import java.util.Map;
 import java.util.Scanner;
 
 /**
@@ -89,5 +89,13 @@ public interface Funciones {
         return newsala;
     }
     
-    
+    public static Map candidatas(Map master, int personas) {
+        Map dummy = master;
+        
+        for (var fila : dummy.entrySet()) {
+            
+        }
+        
+        return dummy;
+    }
 }

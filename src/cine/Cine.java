@@ -76,7 +76,7 @@ public class Cine {
         // TODO code application logic here
         //Sala sala = new Sala(1, 5, 7);
         Sala sala;
-        Map ejemplo;
+        Map libres;
         
         //sala.liberarSala();
         
@@ -84,14 +84,14 @@ public class Cine {
         
         sala = cargarSala(2);
         
-        ejemplo = sala.checkButaca(3);
+        libres = sala.checkButaca();
         
         //sala.setN_sala(3);
         
         //sala.guardarSala();
         
-        System.out.println(ejemplo.toString());
-        System.out.println(sala.displayButaca());
+        System.out.println(libres.toString());
+        System.out.println(sala.escribirButaca());
     }
     
 }
