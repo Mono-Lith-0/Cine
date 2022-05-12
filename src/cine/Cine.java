@@ -110,6 +110,5 @@ public class Cine {
         System.out.println(sala.displayButaca());
 >>>>>>> 712e080 (Primera versión subida a git)
     }
-    // ejemplo para git
     
 }
