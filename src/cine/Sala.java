@@ -7,15 +7,10 @@ package cine;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-<<<<<<< HEAD
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-=======
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.Scanner;
->>>>>>> 712e080 (Primera versión subida a git)
+
 
 /**
  * Clase utilizada para gestionar una sala de cine
@@ -131,7 +126,6 @@ public class Sala {
         }
         System.out.println(nombre + " ha sido guardado correctamente.");
     }
-<<<<<<< HEAD
     
     /**
      * Busca todas las butacas consecutivas disponible para un grupo de
@@ -182,6 +176,5 @@ public class Sala {
         
         return encontradas;
     }
-=======
->>>>>>> 712e080 (Primera versión subida a git)
+
 }

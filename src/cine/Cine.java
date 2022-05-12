@@ -4,16 +4,11 @@
  */
 package cine;
 
-<<<<<<< HEAD
-import static funciones.Funciones.cargarSala;
-import java.io.IOException;
 import java.util.Map;
-=======
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.Scanner;
->>>>>>> 712e080 (Primera versión subida a git)
 
 /**
  * Clase principal
@@ -21,8 +16,6 @@ import java.util.Scanner;
  * @version 1.0
  */
 public class Cine {
-<<<<<<< HEAD
-=======
     
     /**
      * Actualiza la sala con la información del fichero de la sala indicada
@@ -74,7 +67,6 @@ public class Cine {
         
         return newsala;
     }
->>>>>>> 712e080 (Primera versión subida a git)
 
     /**
      * @param args the command line arguments
@@ -84,10 +76,7 @@ public class Cine {
         // TODO code application logic here
         //Sala sala = new Sala(1, 5, 7);
         Sala sala;
-<<<<<<< HEAD
         Map ejemplo;
-=======
->>>>>>> 712e080 (Primera versión subida a git)
         
         //sala.liberarSala();
         
@@ -95,20 +84,14 @@ public class Cine {
         
         sala = cargarSala(2);
         
-<<<<<<< HEAD
         ejemplo = sala.checkButaca(3);
         
-=======
->>>>>>> 712e080 (Primera versión subida a git)
         //sala.setN_sala(3);
         
         //sala.guardarSala();
         
-<<<<<<< HEAD
         System.out.println(ejemplo.toString());
-=======
         System.out.println(sala.displayButaca());
->>>>>>> 712e080 (Primera versión subida a git)
     }
     
 }
