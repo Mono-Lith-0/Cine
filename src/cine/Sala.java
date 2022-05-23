@@ -31,9 +31,9 @@ public class Sala {
     
     /**
      * Constructor de la clase sala
-     * @param n_sala numero de la sala
-     * @param n_filas numero de filas en la sala
-     * @param n_butacas numero de butacas por fila
+     * @param n_sala número de la sala
+     * @param n_filas número de filas en la sala
+     * @param n_butacas número de butacas por fila
      */
     public Sala(int n_sala, int n_filas, int n_butacas) {
         this.n_sala = n_sala;
@@ -60,6 +60,10 @@ public class Sala {
         return n_sala;
     }
     
+    /**
+     * cambia el número de la sala
+     * @param n_sala nuevo número de la sala
+     */
     public void setN_sala(int n_sala) {
         this.n_sala = n_sala;
     }

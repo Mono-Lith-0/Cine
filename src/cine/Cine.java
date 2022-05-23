@@ -37,7 +37,7 @@ public class Cine {
         
         //sala.guardarSala();
         
-        System.out.println(Funciones.candidatas(libres, 2).toString());
+        System.out.println(Funciones.candidatas(libres, 3).toString());
         System.out.println("");
         System.out.println(sala.escribirButaca());
     }
