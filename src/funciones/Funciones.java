@@ -8,6 +8,7 @@ import cine.Sala;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -89,13 +90,65 @@ public interface Funciones {
         return newsala;
     }
     
-    public static Map candidatas(Map master, int personas) {
-        Map dummy = master;
+    public static ArrayList<Integer> contiguo(ArrayList<Integer> numero, int personas) {
+        ArrayList<Integer> temporal = new ArrayList<>();
+        ArrayList<Integer> permanente = new ArrayList<>();
+        int contador = 0;
         
-        for (var fila : dummy.entrySet()) {
+        for (int i = 0; i < numero.size(); i++) {
+            if (i == 0) {
+                if (numero.get(i) == numero.get(i + 1) - 1) {
+                    temporal.add(numero.get(i));
+                    contador++;
+                } else {
+                    if (contador < personas) {
+                        temporal.clear();
+                    }
+                    contador = 0;
+                }
+            } else if (i > 0 && i < numero.size() - 1) {
+                if (numero.get(i) == numero.get(i + 1) - 1 | numero.get(i) == numero.get(i - 1) + 1) {
+                    temporal.add(numero.get(i));
+                    contador++;
+                } else {
+                    if (contador < personas) {
+                        temporal.clear();
+                    }
+                    contador = 0;
+                }
+            } else if (i == numero.size() - 1) {
+                if (numero.get(i) == numero.get(i - 1) + 1) {
+                    temporal.add(numero.get(i));
+                    contador++;
+                } else {
+                    if (contador < personas) {
+                        temporal.clear();
+                    }
+                    contador = 0;
+                }
+            }
             
+            if (contador >= personas) {
+                permanente.addAll(temporal);
+                temporal.clear();
+            }
+        }
+        return permanente;
+    }
+    
+    public static Map candidatas(Map mapa, int personas) {
+        Map<Integer, ArrayList<Integer>> editable = mapa;
+        
+        for (int i = 0; i < editable.size(); i++) {
+            if (editable.containsKey(i)) {
+                editable.put(i, contiguo(editable.get(i), personas));
+                
+                if (editable.get(i).isEmpty()) {
+                    editable.remove(i);
+                }
+            }
         }
         
-        return dummy;
+        return editable;
     }
 }
