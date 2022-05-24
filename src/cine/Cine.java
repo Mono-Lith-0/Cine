@@ -4,9 +4,10 @@
  */
 package cine;
 
-import funciones.Funciones;
+import funciones.*;
 import java.util.Map;
 import java.io.IOException;
+import java.util.Scanner;
 
 /**
  * Clase principal
@@ -20,29 +21,37 @@ public class Cine {
      * @throws java.io.IOException
      */
     public static void main(String[] args) throws IOException {
-        // TODO code application logic here
-        //Sala sala = new Sala(1, 5, 7);
-        Sala sala;
-        Map libres;
-        Map paraXpersonas;
         
-        //sala.liberarSala();
+        int opcion;
+        Scanner scan = new Scanner(System.in);
+           
+        System.out.println("ConsoleCinema\n");
         
-        //sala.guardarSala();
-        
-        sala = Funciones.cargarSala(2);
-        
-        libres = sala.checkButaca();
-        
-        paraXpersonas = Funciones.candidatas(libres, 1);
-        
-        //sala.setN_sala(3);
-        
-        //sala.guardarSala();
-        
-        System.out.println(paraXpersonas.toString());
-        System.out.println("");
-        System.out.println(sala.escribirButaca());
+        do {
+            
+            System.out.println(Menu.displayMenu());
+            opcion = Integer.valueOf(scan.nextLine());
+            
+            switch (opcion) {
+                case 1:
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+                case 5:
+                    break;
+                case 6:
+                    break;
+                case 0:
+                    System.out.println("El programa ha sido cerrado");
+                    break;
+                default:
+                   System.out.println("La orden introducida no está disponible, por favor seleccione otra:");
+            }
+        } while (opcion != 0);
     }
     
 }
