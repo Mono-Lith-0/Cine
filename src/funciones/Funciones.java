@@ -177,13 +177,16 @@ public interface Funciones {
         // editable: versión editable de mapa y que se va a devolver
         Map<Integer, ArrayList<Integer>> editable = mapa;
         
-        // para cada entrada de editable se le aplica contiguo();
-        for (int i = 0; i < editable.size(); i++) {
-            if (editable.containsKey(i)) {
-                editable.put(i, contiguo(editable.get(i), personas));
+        // si solo se buscan butacas para una persona no hace nada
+        if (personas > 1) {
+            // para cada entrada de editable se le aplica contiguo();
+            for (int i = 0; i < editable.size(); i++) {
+                if (editable.containsKey(i)) {
+                    editable.put(i, contiguo(editable.get(i), personas));
                 
-                if (editable.get(i).isEmpty()) {
-                    editable.remove(i);
+                    if (editable.get(i).isEmpty()) {
+                        editable.remove(i);
+                    }
                 }
             }
         }

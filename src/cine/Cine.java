@@ -24,6 +24,7 @@ public class Cine {
         //Sala sala = new Sala(1, 5, 7);
         Sala sala;
         Map libres;
+        Map paraXpersonas;
         
         //sala.liberarSala();
         
@@ -33,11 +34,13 @@ public class Cine {
         
         libres = sala.checkButaca();
         
+        paraXpersonas = Funciones.candidatas(libres, 1);
+        
         //sala.setN_sala(3);
         
         //sala.guardarSala();
         
-        System.out.println(Funciones.candidatas(libres, 3).toString());
+        System.out.println(paraXpersonas.toString());
         System.out.println("");
         System.out.println(sala.escribirButaca());
     }
