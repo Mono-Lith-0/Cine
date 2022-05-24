@@ -4,9 +4,9 @@
  */
 package cine;
 
-import static funciones.Funciones.cargarSala;
-import java.io.IOException;
+import funciones.Funciones;
 import java.util.Map;
+import java.io.IOException;
 
 /**
  * Clase principal
@@ -23,21 +23,23 @@ public class Cine {
         // TODO code application logic here
         //Sala sala = new Sala(1, 5, 7);
         Sala sala;
-        Map ejemplo;
+        Map libres;
         
         //sala.liberarSala();
         
         //sala.guardarSala();
         
-        sala = cargarSala(2);
+        sala = Funciones.cargarSala(2);
         
-        ejemplo = sala.checkButaca(3);
+        libres = sala.checkButaca();
         
         //sala.setN_sala(3);
         
         //sala.guardarSala();
         
-        System.out.println(ejemplo.toString());
+        System.out.println(Funciones.candidatas(libres, 3).toString());
+        System.out.println("");
+        System.out.println(sala.escribirButaca());
     }
     
 }

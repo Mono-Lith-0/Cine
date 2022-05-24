@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+
 /**
  * Clase utilizada para gestionar una sala de cine
  * @author Lila Lorenzo Martí
@@ -30,9 +31,9 @@ public class Sala {
     
     /**
      * Constructor de la clase sala
-     * @param n_sala numero de la sala
-     * @param n_filas numero de filas en la sala
-     * @param n_butacas numero de butacas por fila
+     * @param n_sala número de la sala
+     * @param n_filas número de filas en la sala
+     * @param n_butacas número de butacas por fila
      */
     public Sala(int n_sala, int n_filas, int n_butacas) {
         this.n_sala = n_sala;
@@ -59,6 +60,10 @@ public class Sala {
         return n_sala;
     }
     
+    /**
+     * cambia el número de la sala
+     * @param n_sala nuevo número de la sala
+     */
     public void setN_sala(int n_sala) {
         this.n_sala = n_sala;
     }
@@ -95,8 +100,9 @@ public class Sala {
     /**
      * devuelve una representación del patio de butacas según estén libres u ocupadas
      * @return cadena de los valores del array bidimensional "butaca"
+     * @see #checkButaca()
      */
-    public String displayButaca() {
+    public String escribirButaca() {
         String cadena = "";
         for (boolean[] fila : this.butaca) {
             for (int i = 0; i < fila.length; i++) {
@@ -113,7 +119,7 @@ public class Sala {
     
     /**
      * guarda en un fichero de texto la representación de la sala
-     * generada por {@link #displayButaca()}
+     * generada por {@link #escribirButaca()}
      * @throws IOException 
      */
     public void guardarSala() throws IOException {
@@ -121,36 +127,30 @@ public class Sala {
         File sala = new File(nombre);
         
         try (FileWriter writer = new FileWriter(sala)) {
-            writer.write(displayButaca());
+            writer.write(escribirButaca());
         }
         System.out.println(nombre + " ha sido guardado correctamente.");
     }
     
     /**
-     * Busca todas las butacas consecutivas disponible para un grupo de
-     * personas que vienen juntas
-     * @param personas número de personas que se sentarán de forma contigua 
+     * Busca todas las butacas disponobles
      * @return Map de las butacas disponibles donde su fila es la clave
      */
-    public Map checkButaca(int personas) {
+    public Map checkButaca() {
         /*
         encontradas: Map de butacas disponibles
         fila: fila de la representación de la sala
         columna: columna de la representación de la sala
-        contador: contador utilizado para contar las butacas libres contiguas
         */
         Map<Integer, ArrayList<Integer>> encontradas = new HashMap();
         int fila = 0;
         int columna;
-        int contador;
         
         for (boolean[] butacas : this.butaca) {
             columna = 0;
-            contador = 0;
-            // para cada fila se comprueba si cumple el requisito de butacas
-            while (columna < butacas.length && contador < personas) {
+            // para cada fila se comprueba las butacas libres
+            while (columna < butacas.length) {
                 if (butacas[columna]) {
-                    contador++;
                     // si el Map no contiene la fila esta es generada
                     if (!encontradas.containsKey(fila)) {
                         encontradas.put(fila, new ArrayList<>());
@@ -158,21 +158,13 @@ public class Sala {
                     } else {
                         encontradas.get(fila).add(columna);
                     }
-                // si la sucesión de butacas se rompe se elimina el Map de la fila
-                } else {
-                    contador = 0;
-                    encontradas.remove(fila);
                 }
                 columna++;
             }
-            // limpia la clave fila si no hay suficientes butacas
-            if (contador < personas) {
-                encontradas.remove(fila);
-            }
-            
             fila ++;
         }
         
         return encontradas;
     }
+    
 }
