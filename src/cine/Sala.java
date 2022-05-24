@@ -15,7 +15,7 @@ import java.util.Map;
 /**
  * Clase utilizada para gestionar una sala de cine
  * @author Lila Lorenzo Martí
- * @verion 1.0
+ * @verion 1.1
  */
 public class Sala {
     /**
@@ -40,7 +40,7 @@ public class Sala {
         butaca = new boolean[n_filas][n_butacas];
         for (boolean[] fila : butaca) {
             for (int i = 0; i < fila.length; i++) {
-                fila[i] = false;
+                fila[i] = true;
             }
         }
     }
@@ -74,7 +74,7 @@ public class Sala {
     public void liberarSala() {
         for (boolean[] fila : this.butaca) {
             for (int i = 0; i < fila.length; i++) {
-                fila[i] = false;
+                fila[i] = true;
             }
         }
     }
@@ -85,7 +85,7 @@ public class Sala {
      * @param j columna de la butaca
      */
     public void ocuparButaca(int i, int j) {
-        this.butaca[i][j] = true;
+        this.butaca[i][j] = false;
     }
     
     /**
@@ -94,7 +94,7 @@ public class Sala {
      * @param j columna de la butaca
      */
     public void liberarButaca(int i, int j) {
-        this.butaca[i][j] = false;
+        this.butaca[i][j] = true;
     }
 
     /**
