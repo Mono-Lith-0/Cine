@@ -45,6 +45,8 @@ public class Cine {
                     break;
                 case 6:
                     break;
+                case 7:
+                    break;
                 case 0:
                     System.out.println("El programa ha sido cerrado");
                     break;
