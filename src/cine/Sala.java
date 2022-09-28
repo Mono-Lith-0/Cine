@@ -134,7 +134,7 @@ public class Sala {
     
     /**
      * Busca todas las butacas disponobles
-     * @return Map de las butacas disponibles donde su fila es la clave
+     * @return Map
      */
     public Map checkButaca() {
         /*

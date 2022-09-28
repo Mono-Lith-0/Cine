@@ -8,8 +8,17 @@ package funciones;
  *
  * @author Lila
  */
+
+/*
+Lila,menos mal que te molestaste en comentar hace tres meses, porque no tengo
+ni idea de qué coño hice desde la última vez que abrí esto
+*/
 public interface Menu {
     
+    /**
+     * Método que crea el texto del menú que se mostrará por terminal
+     * @return String
+     */
     public static String displayMenu(){
         String texto = "";
 

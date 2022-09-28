@@ -5,6 +5,7 @@
 package cine;
 
 import funciones.*;
+import java.io.File;
 import java.util.Map;
 import java.io.IOException;
 import java.util.Scanner;
@@ -22,10 +23,14 @@ public class Cine {
      */
     public static void main(String[] args) throws IOException {
         
+        int count_salas = new File("./Salas").list().length;
         int opcion;
         Scanner scan = new Scanner(System.in);
            
         System.out.println("ConsoleCinema\n");
+        
+        // Este println es temporar para testear count_salas
+        System.out.println("El número de salas es " + count_salas);
         
         do {
             

@@ -20,7 +20,7 @@ public interface Funciones {
     
     /**
      * Pide confirmación al usuario sobre si desea confirmar la acción
-     * @return true si responde S y false si responde N
+     * @return true
      */
     public static boolean confirmar() {
         Scanner scan = new Scanner(System.in);
@@ -43,7 +43,7 @@ public interface Funciones {
     /**
      * Actualiza la sala con la información del fichero de la sala indicada
      * @param n_ruta número de la sala a cargar
-     * @return llama al constructor de Sala e introduce los datos del fichero
+     * @return Sala
      * @throws IOException 
      */
     public static Sala cargarSala(int n_ruta) throws IOException {
@@ -112,7 +112,7 @@ public interface Funciones {
      * lo sean como mínimo deben ser "personas" seguidos
      * @param numero ArrayList de enteros a comprobar
      * @param personas Mínimo de contíguos necesarios
-     * @return ArrayList con los resultados obtenidos
+     * @return ArrayList\<Integer\>
      */
     public static ArrayList<Integer> contiguo(ArrayList<Integer> numero, int personas) {
         /*
@@ -170,7 +170,7 @@ public interface Funciones {
      * Comprueba qué butacas son candidatas para las personas introducidas
      * @param mapa Mapa de butacas libres de la sala
      * @param personas Número de personas que necesitan butaca
-     * @return Mapa de las butacas que son óptimas para las personas introducidas
+     * @return Map
      * @see #contiguo(java.util.ArrayList, int) 
      */
     public static Map candidatas(Map mapa, int personas) {
