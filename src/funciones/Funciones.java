@@ -40,6 +40,26 @@ public interface Funciones {
         return input.equals("S");
     }
     
+    public static Sala crearSala(int count_salas) throws IOException {
+        Scanner scan = new Scanner(System.in);
+        int n_sala = count_salas + 1;
+        int n_filas;
+        int n_butacas;
+        
+        System.out.println("Indique el número de filas de la sala " + n_sala + ":");
+        n_filas = Integer.parseInt(scan.nextLine());
+        
+        System.out.println("Indique el número de butacas por fila de la sala " + n_sala + ":");
+        n_butacas = Integer.parseInt(scan.nextLine());
+        
+        System.out.println("Sala " + n_sala + " ha sido creada con " +
+                n_filas + " filas y " + n_butacas + " butacas.");
+        Sala sala = new Sala(n_sala, n_filas, n_butacas);
+        sala.guardarSala();
+        
+        return sala;
+    }
+    
     /**
      * Actualiza la sala con la información del fichero de la sala indicada
      * @param n_ruta número de la sala a cargar
@@ -59,7 +79,7 @@ public interface Funciones {
         linea: línea del fichero leída
         butaca: substring de la línea que hace referencia a una sola butaca
         */
-        String nombre = "sala_" + n_ruta + ".txt";
+        String nombre = "./Salas/sala_" + n_ruta + ".txt";
         File sala = new File(nombre);
         Scanner scan = new Scanner(sala);
         Scanner lector = new Scanner(System.in);
@@ -83,7 +103,7 @@ public interface Funciones {
             } else {
                 System.out.println("La sala seleccionada no existe, introduzca una sala válida");
                 n_ruta = Integer.valueOf(lector.nextLine());
-                nombre = "sala_" + n_ruta + ".txt";
+                nombre = "./Salas/sala_" + n_ruta + ".txt";
                 sala = new File(nombre);
             }
         while (butacas == 0);

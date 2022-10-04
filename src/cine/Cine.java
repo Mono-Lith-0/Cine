@@ -35,10 +35,11 @@ public class Cine {
         do {
             
             System.out.println(Menu.displayMenu());
-            opcion = Integer.valueOf(scan.nextLine());
+            opcion = Integer.parseInt(scan.nextLine());
             
             switch (opcion) {
                 case 1:
+                    Funciones.crearSala(count_salas);
                     break;
                 case 2:
                     break;

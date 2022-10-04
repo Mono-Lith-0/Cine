@@ -123,7 +123,7 @@ public class Sala {
      * @throws IOException 
      */
     public void guardarSala() throws IOException {
-        String nombre = "sala_" + this.n_sala + ".txt";
+        String nombre = "./Salas/sala_" + this.n_sala + ".txt";
         File sala = new File(nombre);
         
         try (FileWriter writer = new FileWriter(sala)) {
