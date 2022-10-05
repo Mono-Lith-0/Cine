@@ -120,16 +120,19 @@ public class Sala {
     /**
      * guarda en un fichero de texto la representación de la sala
      * generada por {@link #escribirButaca()}
+     * @return boolean
      * @throws IOException 
      */
-    public void guardarSala() throws IOException {
+    public boolean guardarSala() throws IOException {
         String nombre = "./Salas/sala_" + this.n_sala + ".txt";
         File sala = new File(nombre);
         
         try (FileWriter writer = new FileWriter(sala)) {
             writer.write(escribirButaca());
+            return true;
+        } catch (Exception e) {
+            return false;
         }
-        System.out.println(nombre + " ha sido guardado correctamente.");
     }
     
     /**

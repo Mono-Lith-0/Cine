@@ -6,7 +6,6 @@ package cine;
 
 import funciones.*;
 import java.io.File;
-import java.util.Map;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -20,28 +19,37 @@ public class Cine {
     /**
      * @param args the command line arguments
      * @throws java.io.IOException
+     * @throws java.lang.InterruptedException
      */
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, InterruptedException {
         
-        int count_salas = new File("./Salas").list().length;
+        Sala sala = new Sala();
+        //int count_salas = new File("./Salas").list().length;
         int opcion;
+        int selector;
         Scanner scan = new Scanner(System.in);
            
         System.out.println("ConsoleCinema\n");
         
-        // Este println es temporar para testear count_salas
-        System.out.println("El número de salas es " + count_salas);
-        
         do {
-            
+            if (sala.getN_sala() > 0) {
+                System.out.println("Sala " + sala.getN_sala() + " seleccionada.\n");
+            } else {
+                System.out.println("No hay ninguna sala seleccionada\n");
+            }
             System.out.println(Menu.displayMenu());
             opcion = Integer.parseInt(scan.nextLine());
             
             switch (opcion) {
                 case 1:
-                    Funciones.crearSala(count_salas);
+                    Funciones.crearSala();
                     break;
                 case 2:
+                    Funciones.displaySalas();
+                    System.out.println("¿Qué sala desea cargar?:");
+                    selector = Integer.parseInt(scan.nextLine());
+                    sala = Funciones.cargarSala(selector);
+                    selector = 0;
                     break;
                 case 3:
                     break;

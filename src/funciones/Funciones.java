@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -40,11 +41,20 @@ public interface Funciones {
         return input.equals("S");
     }
     
-    public static Sala crearSala(int count_salas) throws IOException {
+    /**
+     * Crea una nueva sala, y le dará como número el número de salas creadas más uno,
+     * el usuario rellenará por terminal los datos de esta
+     * @return
+     * @throws IOException 
+     */
+    public static Sala crearSala() throws IOException {
         Scanner scan = new Scanner(System.in);
-        int n_sala = count_salas + 1;
+        int n_sala;
         int n_filas;
         int n_butacas;
+        
+        System.out.println("Indique el número de la sala:");
+        n_sala = Integer.parseInt(scan.nextLine());
         
         System.out.println("Indique el número de filas de la sala " + n_sala + ":");
         n_filas = Integer.parseInt(scan.nextLine());
@@ -52,12 +62,29 @@ public interface Funciones {
         System.out.println("Indique el número de butacas por fila de la sala " + n_sala + ":");
         n_butacas = Integer.parseInt(scan.nextLine());
         
-        System.out.println("Sala " + n_sala + " ha sido creada con " +
-                n_filas + " filas y " + n_butacas + " butacas.");
         Sala sala = new Sala(n_sala, n_filas, n_butacas);
-        sala.guardarSala();
+        if (sala.guardarSala()) {
+            System.out.println("Sala " + n_sala + " ha sido guardada correctamente con " +
+                    n_filas + " filas y " + n_butacas + " butacas por fila");
+        } else {
+            System.out.println("Ha habido un error al guardar la sala " + n_sala +
+                    ", inténtelo de nuevo");
+        }
         
         return sala;
+    }
+    
+    public static void displaySalas() {
+        File[] salas = new File("./Salas").listFiles();
+        String output = "Lista de salas guardadas:\n";
+        
+        Arrays.sort(salas);
+        
+        for (File file : salas) {
+            output += " " + file.getPath().substring(13, 14);
+        }
+       
+        System.out.println(output);
     }
     
     /**
@@ -102,7 +129,7 @@ public interface Funciones {
                 butacas = largo - butacas;
             } else {
                 System.out.println("La sala seleccionada no existe, introduzca una sala válida");
-                n_ruta = Integer.valueOf(lector.nextLine());
+                n_ruta = Integer.parseInt(lector.nextLine());
                 nombre = "./Salas/sala_" + n_ruta + ".txt";
                 sala = new File(nombre);
             }
